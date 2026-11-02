@@ -18,7 +18,7 @@ $('badges').innerHTML=badges.map(([icon,name,desc,test])=>`<div class="badge ${t
 function add(n=1){if(!Number.isSafeInteger(n)||n<=0||state.total>Number.MAX_SAFE_INTEGER-n)return;const before=state.days[dateKey()]||0;state.total+=n;state.days[dateKey()]=before+n;save();render();for(let i=0;i<n;i++)drops.push({x:.22+Math.random()*.56,age:0});animate();if(before<state.goal&&before+n>=state.goal)toast('Objectif atteint ! La rosée de lumière illumine votre jardin.');}
 $('manual').onclick=()=>add();
 $('water-button').onclick=()=>add();
-$('admin-add').onclick=()=>add(10000);
+$('admin-add').onclick=()=>{add(10000);toast('10 000 gouttes ajoutées à votre jardin.');};
 $('settings').onclick=()=>{const value=prompt('Votre objectif quotidien (100 à 1 000 000 répétitions) :',state.goal);if(value===null)return;const goal=Number(value);if(!Number.isSafeInteger(goal)||goal<100||goal>1000000){toast('Choisissez un nombre entier entre 100 et 1 000 000.');return;}state.goal=goal;save();render();};
 // Only final speech results count. Each result index is processed once per session.
 function countPhrases(text){const normalized=text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f\u064b-\u065f\u0670]/g,'').replace(/[أإآ]/g,'ا').replace(/[’'\-]/g,' ');return (normalized.match(/\b(?:a?sta(?:g|gh|r|ghf|gf|kh)fir(?:ou|u|o)?\s*(?:allah|ullah|llah)|astaghfirullah)\b|استغفر\s*الله/g)||[]).length;}

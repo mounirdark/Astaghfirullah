@@ -11,9 +11,10 @@ La progression est conservée dans localStorage sur l’appareil. Export/import 
 ## Progression
 
 - Départ : terre aride ; une goutte animée à chaque répétition.
-- 10 000 : premières herbes ; 100 000 : prairie.
-- 1 000 000 : premier arbre ; un arbre supplémentaire par million.
-- 100 000 000 : forêt de géants (représentation plafonnée à 80 arbres).
+- 10 000 : premier arbre ; 25 000 : jardin fleuri.
+- 100 000 : bosquet ; 500 000 : forêt ; 1 000 000 : forêt de géants.
+- Un arbre supplémentaire par tranche de 10 000 gouttes (affichage plafonné à 80 arbres). Les arbres grandissent jusqu’au palier d’un million.
+- Bouton admin : +1 000 000 sans animation. Bouton de remise à zéro : efface les compteurs, le jardin et les succès après confirmation, en conservant l’objectif quotidien.
 - Objectif quotidien : 10 000 par défaut, réglable de 100 à 1 000 000. La récompense illumine le jardin pour la journée. Les jours suivent la date locale de l’appareil.
 - Six succès permanents, dont 1 000 répétitions par jour pendant sept jours consécutifs.
 

@@ -26,6 +26,7 @@ $('badges').innerHTML=badges.map(([icon,name,desc,test])=>`<div class="badge ${t
 function add(n=1,animated=true){if(!Number.isSafeInteger(n)||n<=0||state.total>Number.MAX_SAFE_INTEGER-n)return;const before=state.days[dateKey()]||0;state.total+=n;state.days[dateKey()]=before+n;save();render();if(animated){for(let i=0;i<n;i++)drops.push({x:.22+Math.random()*.56,age:0});animate();}if(before<state.goal&&before+n>=state.goal)toast('Objectif atteint ! La rosée de lumière illumine votre jardin.');}
 $('manual').onclick=()=>add();
 $('water-button').onclick=()=>add();
+$('admin-add-1000').onclick=()=>{add(1000,false);toast('1 000 gouttes ajoutées à votre jardin.');};
 $('admin-add').onclick=()=>{add(1000000,false);toast('1 000 000 de gouttes ajoutées à votre jardin.');};
 $('reset').onclick=()=>{if(!confirm('Remettre à zéro le jardin, les compteurs et tous les succès sur cet appareil ? Votre objectif quotidien sera conservé.'))return;stop();state={total:0,goal:state.goal,days:{}};drops=[];previousBadges=badges.map(()=>false);save();render();if(Speech)$('mic-status').textContent='Jardin remis à zéro. Vous pouvez recommencer à réciter.';toast('Votre jardin et votre progression ont été remis à zéro.');};
 $('settings').onclick=()=>{const value=prompt('Votre objectif quotidien (100 à 1 000 000 répétitions) :',state.goal);if(value===null)return;const goal=Number(value);if(!Number.isSafeInteger(goal)||goal<100||goal>1000000){toast('Choisissez un nombre entier entre 100 et 1 000 000.');return;}state.goal=goal;save();render();};
